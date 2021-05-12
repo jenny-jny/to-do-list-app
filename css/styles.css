@@ -36,8 +36,12 @@ cursor: pointer;
 opacity: .8;}
 
 /* To-do list */
-ol {padding-left: 20px;}
-ol li {padding: 5px;color:#000;}
+ol {
+  padding-left: 20px;
+}
+ol li {
+  padding: 5px;color:#000;
+}
 li > crossOutButton {
 	background: none;
 	border: none;
@@ -45,11 +49,15 @@ li > crossOutButton {
 	color: #025f70;
 	font-weight: 800;
 }
-ol li:nth-child(even){background: #dfdfdf;}
+ol li:nth-child(even){
+  background: #dfdfdf;
+}
 li:hover{
   cursor: pointer;
  }
-.strike{text-decoration: line-through;}
+.strike{
+  text-decoration: line-through;
+}
 .delete {
 	display: none;
 }
