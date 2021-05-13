@@ -38,32 +38,65 @@
 // If you get stuck, you can look below for the jQuery code. However, try yourself to convert the vanilla JS code provided to jQuery first.
   
 // jQuery Code
-//1. Adding a new item to the list:
+//1. Adding a new item to the list by clicking button and clear input:
 $('#button').click(function(){
-  let li = $('<li></li>');
   let inputValue = $('#input').val();
-  li.append(inputValue);
 
   if(inputValue === ''){
     alert('You must write something!');
   }else{
-    $('#list').append(li);
+    let li = $('<li></li>');
+    li.append(inputValue);
+    inputValue = '';
 
     //3. Adding a delete button
     let crossOutButton = $('<crossOutButton></crossOutButton>');
     crossOutButton.append(document.createTextNode('X'));
     $(li).append(crossOutButton);
 
-    crossOutButton.on('click', function deleteListItem(){
+    $('#list').append(li);
+
+    $('input').val('');
+
+    crossOutButton.click(function deleteListItem(){
       $(li).addClass('delete');
     });
+  }
+});
+
+//1. Adding a new item to the list by pressing enter and clear input:
+$('input').keypress(function(e){
+  if(e.which === 13){
+    e.preventDefault();
+    let inputValue = $('input').val();
+
+    if(inputValue === ''){
+      alert('You must write something!');
+    }else{
+      let li = $('<li></li>');
+      li.append(inputValue);
+      inputValue = '';
+      
+      //3. Adding a delete button
+      let crossOutButton = $('<crossOutButton></crossOutButton>');
+      crossOutButton.append(document.createTextNode('X'));
+      $(li).append(crossOutButton);
+
+      $('#list').append(li);
+
+      $('input').val('');
+
+      crossOutButton.click(function deleteListItem(){
+        $(li).addClass('delete');
+      });
+    }
   }
 });
 
 //2. Crossing an item out:
 $('#list').on('dblclick', 'li', function crossOut(){ 
   $(this).toggleClass('strike');
-})
+});
 
 //4. Reordering the items:
 $('#list').sortable();
